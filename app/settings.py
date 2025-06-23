@@ -59,6 +59,12 @@ INSTALLED_APPS = [
     "cloudinary_storage",
     "cloudinary",
     "corsheaders",
+    "tenants",
+    "property",
+    "maintenance",
+    "lease",
+    "finance",
+    "communication",
 ]
 
 MIDDLEWARE = [
