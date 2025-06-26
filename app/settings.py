@@ -50,7 +50,9 @@ CORS_ALLOW_HEADERS = (*default_headers,)
 # Application definition
 
 INSTALLED_APPS = [
+    "django_daisy",
     "django.contrib.admin",
+    "django.contrib.humanize",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -59,11 +61,11 @@ INSTALLED_APPS = [
     "cloudinary_storage",
     "cloudinary",
     "corsheaders",
-    "tenants",
     "property",
-    "maintenance",
+    "tenants",
     "lease",
     "finance",
+    "maintenance",
     "communication",
 ]
 
@@ -79,7 +81,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = "app.urls"
 
 TEMPLATES = [
     {
@@ -96,7 +98,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = "app.wsgi.application"
 
 
 # Database
@@ -119,16 +121,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -136,9 +138,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -166,7 +168,7 @@ STORAGES = {
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Cloudinary Storage
 
@@ -220,3 +222,62 @@ NOTIFICATIONS_URL = os.getenv("NOTIFICATIONS_URL")
 # celery settings
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+
+# Daisy UI settings
+
+DAISY_SETTINGS = {
+    "SITE_TITLE": " ",
+    "SITE_HEADER": "Real-Estate Management Administration",
+    "INDEX_TITLE": "Hi, welcome to your dashboard",
+    "SITE_LOGO": None,
+    "EXTRA_STYLES": [],
+    "EXTRA_SCRIPTS": [],
+    "LOAD_FULL_STYLES": False,
+    "SHOW_CHANGELIST_FILTER": False,
+    "DONT_SUPPORT_ME": True,
+    "SIDEBAR_FOOTNOTE": "",
+    "APPS_REORDER": {
+        "auth": {
+            "icon": "fa-solid fa-person-military-pointing",
+            "name": "Authentication",
+            "hide": False,
+            "divider_title": "Auth",
+        },
+        "property": {
+            "icon": "fa-solid fa-caret-right",
+            "name": "Property",
+            "hide": False,
+            "divider_title": "Apps",
+        },
+        "tenants": {
+            "icon": "fa-solid fa-caret-right",
+            "name": "Tenants",
+            "hide": False,
+            # "divider_title": "Tenants",
+        },
+        "lease": {
+            "icon": "fa-solid fa-caret-right",
+            "name": "Lease",
+            "hide": False,
+            # "divider_title": "Lease",
+        },
+        "finance": {
+            "icon": "fa-solid fa-caret-right",
+            "name": "Finance",
+            "hide": False,
+            # "divider_title": "Finance",
+        },
+        "maintenance": {
+            "icon": "fa-solid fa-caret-right",
+            "name": "Maintenance",
+            "hide": False,
+            # "divider_title": "Maintenance",
+        },
+        "communication": {
+            "icon": "fa-solid fa-caret-right",
+            "name": "Communication",
+            "hide": False,
+            # "divider_title": "Communication",
+        },
+    },
+}
