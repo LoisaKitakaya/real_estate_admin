@@ -1,6 +1,7 @@
 from django.db import models
 from property.models import Property
 from tenants.models import Tenant
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class Lease(models.Model):
@@ -9,7 +10,9 @@ class Lease(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     rent_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    document = models.FileField(upload_to="leases/", blank=True, null=True)
+    document = models.FileField(
+        upload_to="leases/", blank=True, null=True, storage=RawMediaCloudinaryStorage()
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
