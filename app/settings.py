@@ -227,7 +227,7 @@ CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 
 DAISY_SETTINGS = {
     "SITE_TITLE": " ",
-    "SITE_HEADER": "Real-Estate Management Administration",
+    "SITE_HEADER": "Real-Estate Management",
     "INDEX_TITLE": "Hi, welcome to your dashboard",
     "SITE_LOGO": None,
     "EXTRA_STYLES": [],
