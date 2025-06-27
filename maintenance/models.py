@@ -19,8 +19,9 @@ class MaintenanceRequest(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     description = models.TextField()
-    status = models.CharField(max_length=20, choices=MAINTENANCE_STATUS)
+    status = models.CharField(max_length=20, choices=MAINTENANCE_STATUS, default=OPEN)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_delivered = models.BooleanField(default=False)
 
     class Meta:
         db_table = "maintenance"
