@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from tenants.models import Tenant
-from django.contrib.auth.models import User
+from users.models import User
 
 
 class Message(models.Model):

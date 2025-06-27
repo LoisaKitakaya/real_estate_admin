@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "cloudinary_storage",
     "cloudinary",
     "corsheaders",
+    "users",
     "property",
     "tenants",
     "lease",
@@ -114,6 +115,8 @@ DATABASES = {
         "PORT": os.getenv("DB_PORT"),
     }
 }
+
+AUTH_USER_MODEL = "users.User"
 
 
 # Password validation
