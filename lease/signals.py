@@ -14,7 +14,7 @@ def post_save_property(sender, instance, created, **kwargs):
 
             property.save()
     except Exception as e:
-        print(f"{str(e)}")
+        raise str(e)
 
 
 @receiver(post_delete, sender=Lease)
@@ -26,4 +26,4 @@ def post_delete_property(sender, instance, **kwargs):
 
         property.save()
     except Exception as e:
-        print(f"{str(e)}")
+        raise str(e)
