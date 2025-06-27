@@ -1,3 +1,4 @@
+import logging
 from celery import shared_task
 from django.conf import settings
 from communication.models import Message
@@ -5,10 +6,17 @@ from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
+logger = logging.getLogger(__name__)
+
 
 @shared_task
 def send_email_to_tenant():
     message = Message.objects.filter(is_delivered=False).first()
+
+    if not message:
+        logger.info("No undelivered messages found")
+
+        return
 
     context = {
         "receiver": message.recipient.user.first_name,
@@ -25,7 +33,7 @@ def send_email_to_tenant():
 
     try:
         html_content = render_to_string(
-            "templates/emails/message.html",
+            "emails/message.html",
             context=context,
         )
 
@@ -43,7 +51,9 @@ def send_email_to_tenant():
         msg.send()
 
     except Exception as e:
-        raise str(e)
+        logger.error(f"Error sending email: {e}", exc_info=True)
+        
+        raise
     else:
         message.is_delivered = True
 
