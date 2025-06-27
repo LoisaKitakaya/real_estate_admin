@@ -25,7 +25,13 @@ class MessageInline(admin.TabularInline):
 
 @admin.register(Tenant)
 class TenantAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "email", "phone", "created_at")
-    search_fields = ("first_name", "last_name", "email")
+    list_display = (
+        "user__first_name",
+        "user__last_name",
+        "user__email",
+        "phone",
+        "created_at",
+    )
+    search_fields = ("user__first_name", "user__last_name", "user__email")
     inlines = [LeaseInline, MaintenanceRequestInline, MessageInline]
     readonly_fields = ("created_at",)

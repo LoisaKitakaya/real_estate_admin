@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from property.models import Property
 from tenants.models import Tenant
@@ -14,6 +15,7 @@ class MaintenanceRequest(models.Model):
         ("CLOSED", "Closed"),
     )
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     description = models.TextField()

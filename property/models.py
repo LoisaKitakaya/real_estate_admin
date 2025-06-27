@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 
@@ -12,6 +13,7 @@ class Property(models.Model):
         (COMMERCIAL, "Commercial"),
     )
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     address = models.CharField(max_length=255)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPES)
     size = models.FloatField()

@@ -1,10 +1,10 @@
+import uuid
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Tenant(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15, blank=True)
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
