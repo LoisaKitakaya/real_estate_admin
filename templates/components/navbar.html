@@ -1,15 +1,20 @@
 <div class="navbar bg-base-100 shadow-sm">
   <div class="navbar-start">
-    <a class="text-xl" href="/">{{ company_name }}</a>
+    <a class="text-xl btn btn-ghost" href="/">Tenant's Portal</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li><a>Item 2</a></li>
-      <li><a>Item 3</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/payments">Payments</a></li>
+      <li><a href="/maintenance">Maintenance</a></li>
+      <li><a href="/communications">Communications</a></li>
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn btn-sm">Button</a>
+    {% if user.is_authenticated %}
+    <a class="btn btn-sm btn-error" href="/logout">Logout</a>
+    {% else %}
+    <a class="btn btn-sm btn-success" href="/login">Login</a>
+    {% endif %}
   </div>
 </div>
