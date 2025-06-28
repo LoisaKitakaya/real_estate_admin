@@ -243,8 +243,8 @@ DAISY_SETTINGS = {
     "SIDEBAR_FOOTNOTE": "",
     "APPS_REORDER": {
         "auth": {
-            "icon": "fa-solid fa-lock",
-            "name": "Authentication",
+            "icon": "fa-solid fa-user-group",
+            "name": "Groups",
             "hide": False,
             "divider_title": "Auth",
         },
@@ -261,7 +261,7 @@ DAISY_SETTINGS = {
             "divider_title": "Apps",
         },
         "tenants": {
-            "icon": "fa-solid fa-users",
+            "icon": "fa-solid fa-people-group",
             "name": "Tenants",
             "hide": False,
             # "divider_title": "Tenants",
