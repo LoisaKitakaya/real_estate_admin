@@ -293,3 +293,7 @@ DAISY_SETTINGS = {
         },
     },
 }
+
+# Currency settings
+
+DEFAULT_CURRENCY = "KES"

@@ -1,5 +1,7 @@
 from lease.models import Lease
+from finance.models import Payment
 from property.models import Property
+from datetime import date, timedelta
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 
@@ -25,5 +27,23 @@ def post_delete_property(sender, instance, **kwargs):
         property.is_occupied = False
 
         property.save()
+    except Exception as e:
+        raise str(e)
+
+@receiver(post_save, sender=Payment)
+def post_save_payment(sender, instance, created, **kwargs):
+    try:
+        if created:
+            lease = Lease.objects.get(id=instance.lease.id)
+            
+            previous_deadline = lease.end_date
+            
+            next_deadline = previous_deadline + timedelta(days=30)
+            
+            lease.start_date = previous_deadline
+            
+            lease.end_date = next_deadline
+            
+            lease.save()
     except Exception as e:
         raise str(e)

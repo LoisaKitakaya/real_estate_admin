@@ -16,7 +16,7 @@ class Payment(models.Model):
     lease = models.ForeignKey(Lease, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_date = models.DateField()
-    status = models.CharField(max_length=20, choices=PAYMENT_STATUS)
+    status = models.CharField(max_length=20, choices=PAYMENT_STATUS, default=PENDING)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
