@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+<!--  -->
+
+{% block title %} Payments {% endblock %}
+
+<!--  -->
+
+{% block body %}
+<div class="min-h-screen">
+  <div class="px-2 w-2/3 mx-auto">
+    <p class="my-8 text-xl">
+      <strong>Next Payment Date:</strong> {{ " " }}
+      <em>{{ lease.end_date }}</em>
+    </p>
+
+    <div
+      class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 shadow-sm"
+    >
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Amount Paid</th>
+            <th>Date Of Payment</th>
+            <th>Payment Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if payments %}
+          <!--  -->
+          {% for payment in payments %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ payment.amount }} {{ default_currency }}</td>
+            <td>{{ payment.payment_date }}</td>
+            {% if payment.status == "paid" %}
+            <td><div class="badge badge-success">{{ payment.status }}</div></td>
+            {% elif payment.status == "pending" %}
+            <td><div class="badge badge-primary">{{ payment.status }}</div></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <!--  -->
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!--  -->

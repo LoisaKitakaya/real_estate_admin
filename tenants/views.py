@@ -1,5 +1,6 @@
 from lease.models import Lease
 from tenants.models import Tenant
+from finance.models import Payment
 from django.contrib import messages
 from property.models import Property
 from django.shortcuts import render, redirect
@@ -74,3 +75,21 @@ def profile(request):
     }
 
     return render(request, "tenants/profile.html", context)
+
+
+@login_required(login_url="/login")
+def payments(request):
+    current_user = request.user
+
+    tenant = Tenant.objects.get(user=current_user)
+
+    lease = Lease.objects.get(tenant=tenant)
+    
+    payments = Payment.objects.filter(lease=lease)
+
+    context = {
+        "lease": lease,
+        "payments": payments,
+    }
+    
+    return render(request, "tenants/payments.html", context)
