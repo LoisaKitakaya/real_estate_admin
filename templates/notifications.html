@@ -2,7 +2,7 @@
 <!--  -->
 {% for message in messages %}
 <!--  -->
-{% if message.tag == "info" %}
+{% if message.tags == "info" %}
 <div role="alert" class="alert alert-info">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@
   </svg>
   <span>{{ message }}</span>
 </div>
-{% elif message.tag == "success" %}
+{% elif message.tags == "success" %}
 <div role="alert" class="alert alert-success">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@
   </svg>
   <span>{{ message }}</span>
 </div>
-{% elif message.tag == "warning" %}
+{% elif message.tags == "warning" %}
 <div role="alert" class="alert alert-warning">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@
   </svg>
   <span>{{ message }}</span>
 </div>
-{% elif message.tag == "error" %}
+{% elif message.tags == "error" %}
 <div role="alert" class="alert alert-error">
   <svg
     xmlns="http://www.w3.org/2000/svg"

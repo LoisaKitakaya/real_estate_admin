@@ -32,8 +32,27 @@
 
     <!--  -->
 
-    {% include "notifications.html" %}
+    <div class="fixed bottom-0 p-3 z-[1] right-0">
+      {% include "notifications.html" %}
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const alerts = document.querySelectorAll(".alert");
+        alerts.forEach((alert) => {
+          setTimeout(() => {
+            alert.remove();
+          }, 2500);
+        });
+      });
+    </script>
   </body>
 </html>
