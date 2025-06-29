@@ -4,6 +4,7 @@ from users.models import User
 
 
 class Tenant(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15, blank=True)
     notes = models.TextField(blank=True)

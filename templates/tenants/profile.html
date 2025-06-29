@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+<!--  -->
+
+{% block title %} Profile {% endblock %}
+
+<!--  -->
+
+{% block body %}
+<div class="px-2">
+  <div class="flex flex-col justify-center items-center gap-4 py-12">
+    <div class="card w-96 bg-base-200 shadow-sm border">
+      <div class="card-body">
+        <div class="flex justify-between">
+          <h2 class="text-3xl font-bold">Tenant Info</h2>
+        </div>
+        <ul class="mt-6 flex flex-col gap-2 text-xs">
+          {% if tenant_info %}
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>ID: {{ tenant_info.tenant_id }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Username: {{ tenant_info.username }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Email: {{ tenant_info.email }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>First Name: {{ tenant_info.first_name }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Last Name: {{ tenant_info.last_name }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Phone: {{ tenant_info.phone }}</span>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider w-96 mx-auto my-2"></div>
+
+    <div class="card w-96 bg-base-200 shadow-sm border">
+      <div class="card-body">
+        <div class="flex justify-between">
+          <h2 class="text-3xl font-bold">Lease Info</h2>
+        </div>
+        <ul class="mt-6 flex flex-col gap-2 text-xs">
+          {% if lease_info %}
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>ID: {{ lease_info.lease_id }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Lease Start Date: {{ lease_info.lease_start_date }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Lease End Date: {{ lease_info.lease_end_date }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Rent Amount: {{ lease_info.rent_amount }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Lease Property Address: {{ lease_info.address }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Lease Property Type: {{ lease_info.property_type }}</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 me-2 inline-block text-success"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span>Lease Property Size: {{ lease_info.size }}</span>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!--  -->
