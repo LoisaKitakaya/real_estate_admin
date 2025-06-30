@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+<!--  -->
+
+{% block title %} Maintenance {% endblock %}
+
+<!--  -->
+
+{% block body %}
+<div class="min-h-screen">
+  <div class="px-2 w-3/4 mx-auto">
+    <div class="flex justify-end my-8">
+      <button class="btn btn-primary" onclick="my_modal_2.showModal()">
+        Create Maintenance Request
+      </button>
+    </div>
+
+    <div
+      class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 shadow-sm"
+    >
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Property</th>
+            <th>Maintenance Description</th>
+            <th>Maintenance Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if maintenance_requests %}
+          <!--  -->
+          {% for requests in maintenance_requests %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ requests.id }}</td>
+            <td>{{ requests.property.address }}</td>
+            <td>{{ requests.description }}</td>
+            {% if requests.status == "open" %}
+            <td>
+              <div class="badge badge-primary">{{ requests.status }}</div>
+            </td>
+            {% elif payment.status == "in_progress" %}
+            <td>
+              <div class="badge badge-warning">{{ requests.status }}</div>
+            </td>
+            {% elif payment.status == "closed" %}
+            <td>
+              <div class="badge badge-success">{{ requests.status }}</div>
+            </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <!--  -->
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<dialog id="my_modal_2" class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Maintenance Request</h3>
+
+    <div class="py-4">
+      <form action="{% url 'maintenance' %}" method="POST">
+        {% csrf_token %}
+        <!--  -->
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">Describe Your Issue</legend>
+          <textarea
+            class="textarea h-24 w-full"
+            name="description"
+            placeholder="Description"
+          ></textarea>
+        </fieldset>
+        <button class="btn btn-success my-2 w-full" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <p class="text-xs text-center">
+      Press <strong><em>ESC</em></strong> key or click outside to close
+    </p>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+{% endblock %}
+
+<!--  -->

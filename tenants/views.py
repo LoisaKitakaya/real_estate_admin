@@ -4,6 +4,7 @@ from finance.models import Payment
 from django.contrib import messages
 from property.models import Property
 from django.shortcuts import render, redirect
+from maintenance.models import MaintenanceRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
@@ -48,7 +49,7 @@ def profile(request):
     tenant = Tenant.objects.get(user=current_user)
 
     lease = Lease.objects.get(tenant=tenant)
-    
+
     property = Property.objects.get(id=lease.property.id)
 
     context = {
@@ -84,12 +85,36 @@ def payments(request):
     tenant = Tenant.objects.get(user=current_user)
 
     lease = Lease.objects.get(tenant=tenant)
-    
+
     payments = Payment.objects.filter(lease=lease)
 
     context = {
         "lease": lease,
         "payments": payments,
     }
-    
+
     return render(request, "tenants/payments.html", context)
+
+
+@login_required(login_url="/login")
+def maintenance(request):
+    current_user = request.user
+
+    tenant = Tenant.objects.get(user=current_user)
+
+    if request.method == "POST":
+        description = request.POST.get("description")
+
+        lease = Lease.objects.get(tenant=tenant)
+
+        MaintenanceRequest.objects.create(
+            property=lease.property,
+            tenant=tenant,
+            description=description,
+        )
+
+    context = {
+        "maintenance_requests": MaintenanceRequest.objects.filter(tenant=tenant),
+    }
+
+    return render(request, "tenants/maintenance.html", context)

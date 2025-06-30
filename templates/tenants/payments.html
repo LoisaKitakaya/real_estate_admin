@@ -8,7 +8,7 @@
 
 {% block body %}
 <div class="min-h-screen">
-  <div class="px-2 w-2/3 mx-auto">
+  <div class="px-2 w-3/4 mx-auto">
     <p class="my-8 text-xl">
       <strong>Next Payment Date:</strong> {{ " " }}
       <em>{{ lease.end_date }}</em>
@@ -22,6 +22,7 @@
         <thead>
           <tr>
             <th>#</th>
+            <th>ID</th>
             <th>Amount Paid</th>
             <th>Date Of Payment</th>
             <th>Payment Status</th>
@@ -33,6 +34,7 @@
           {% for payment in payments %}
           <tr>
             <th>{{ forloop.counter }}</th>
+            <td>{{ payment.id }}</td>
             <td>{{ payment.amount }} {{ default_currency }}</td>
             <td>{{ payment.payment_date }}</td>
             {% if payment.status == "paid" %}
