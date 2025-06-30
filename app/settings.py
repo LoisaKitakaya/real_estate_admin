@@ -106,8 +106,15 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
+DB_TYPE = os.getenv("DB_TYPE")
+
+DB_CONFIG = (
+    {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+    if DB_TYPE == "sqlite3"
+    else {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("DB_NAME"),
         "USER": os.getenv("DB_USER"),
@@ -115,7 +122,9 @@ DATABASES = {
         "HOST": os.getenv("DB_HOST"),
         "PORT": os.getenv("DB_PORT"),
     }
-}
+)
+
+DATABASES = {"default": DB_CONFIG}
 
 AUTH_USER_MODEL = "users.User"
 
