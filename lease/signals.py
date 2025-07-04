@@ -3,6 +3,7 @@ from finance.models import Payment
 from property.models import Property
 from datetime import date, timedelta
 from django.dispatch import receiver
+from utils.stripe import create_price
 from django.db.models.signals import post_save, post_delete
 
 
@@ -10,6 +11,12 @@ from django.db.models.signals import post_save, post_delete
 def post_save_property(sender, instance, created, **kwargs):
     try:
         if created:
+            lease = Lease.objects.get(id=instance.id)
+            
+            lease.stripe_price_id = create_price(lease)
+            
+            lease.save()
+            
             property = Property.objects.get(id=instance.property.id)
 
             property.is_occupied = True

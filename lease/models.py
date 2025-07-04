@@ -15,6 +15,7 @@ class Lease(models.Model):
     document = models.FileField(
         upload_to="leases/", blank=True, null=True, storage=RawMediaCloudinaryStorage()
     )
+    stripe_price_id = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
