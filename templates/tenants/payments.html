@@ -9,10 +9,17 @@
 {% block body %}
 <div class="min-h-screen">
   <div class="px-2 w-3/4 mx-auto">
-    <p class="my-8 text-xl">
-      <strong>Next Payment Date:</strong> {{ " " }}
-      <em>{{ lease.end_date }}</em>
-    </p>
+    <div class="flex justify-between items-center my-8">
+      <span class="text-xl">
+        <strong>Next Payment Date:</strong> {{ " " }}
+        <em>{{ lease.end_date }}</em>
+      </span>
+      <form action="{% url 'make_payment' %}" method="POST">
+        {% csrf_token %}
+        <!--  -->
+        <button class="btn btn-primary" type="submit">Make Payment</button>
+      </form>
+    </div>
 
     <div
       class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 shadow-sm"
