@@ -128,6 +128,8 @@ DATABASES = {"default": DB_CONFIG}
 
 AUTH_USER_MODEL = "users.User"
 
+SITE_URL = os.getenv("SITE_URL")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -305,4 +307,9 @@ DAISY_SETTINGS = {
 
 # Currency settings
 
-DEFAULT_CURRENCY = "KES"
+DEFAULT_CURRENCY = "usd"
+
+# Stripe configurations
+
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
